@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alien Archives</title>
+  <!-- Linking external stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Website Header -->
+  <header>
+    <h1>ALIEN ARCHIVES</h1>
+  </header>
+
+  <!-- Container for all book cards -->
+  <div class="book-grid">
+
+    <!-- Book 1 -->
+    <div class="card">
+      <img src="arrival.png" alt="The Arrival: First Contact">
+      <h3>The Arrival: First Contact</h3>
+      <p><em>Dr. Orion Vose</em></p>
+      <p>The skies above New Mexico glowed as an unidentified object pierced Earth’s atmosphere...</p>
+      <button onclick="onRead('The skies above New Mexico glowed as an unidentified object pierced Earth’s atmosphere. Scientists and governments scrambled to make first contact with what appeared to be intelligent extraterrestrial life. The world would never be the same.')">READ & LISTEN</button>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="card">
+      <img src="infiltration.png" alt="Alien Infiltration: Among Us">
+      <h3>Alien Infiltration: Among Us</h3>
+      <p><em>Luna Arcturus</em></p>
+      <p>They came silently, blending into humanity. Disguised as neighbors, co-workers, and leaders...</p>
+      <button onclick="onRead('They came silently, blending into humanity. Disguised as neighbors, co-workers, and even world leaders, their mission was simple: observe, manipulate, and prepare for full integration.')">READ & LISTEN</button>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="card">
+      <img src="galacticwar.png" alt="Galactic War: The Zorath Conflict">
+      <h3>Galactic War: The Zorath Conflict</h3>
+      <p><em>Captain Rylos Kane</em></p>
+      <p>The Zorath Empire declared war on the Alliance after centuries of uneasy peace...</p>
+      <button onclick="onRead('The Zorath Empire declared war on the Alliance after centuries of uneasy peace. Massive starships clashed across galaxies, and Earth found itself forced into an interstellar battle.')">READ & LISTEN</button>
+    </div>
+
+    <!-- Book 4 -->
+    <div class="card">
+      <img src="abducted.png" alt="Abducted: The Human Experiment">
+      <h3>Abducted: The Human Experiment</h3>
+      <p><em>Elara Moon</em></p>
+      <p>When Sarah woke up on a cold metal table, she realized she wasn’t on Earth anymore...</p>
+      <button onclick="onRead('When Sarah woke up on a cold metal table, she realized she wasn’t on Earth anymore. She was part of a genetic experiment conducted by beings far more advanced than humans could comprehend.')">READ & LISTEN</button>
+    </div>
+
+    <!-- Book 5 -->
+    <div class="card">
+      <img src="archives.png" alt="The Alien Archives: Hidden Truth">
+      <h3>The Alien Archives: Hidden Truth</h3>
+      <p><em>Professor Xeno Carter</em></p>
+      <p>Deep beneath Area 51 lies the Alien Archives — secret records of every alien encounter since 1947...</p>
+      <button onclick="onRead('Deep beneath Area 51 lies the Alien Archives — the classified records of every encounter, abduction, and secret deal made with extraterrestrial civilizations since 1947.')">READ & LISTEN</button>
+    </div>
+
+  </div>
+
+  <script>
+    // This function is called when the user clicks on any "READ & LISTEN" button
+    function onRead(bookText) {
+      // Send book text to the TTS function
+      generateTTS(bookText);
+    }
+
+    // This function sends text to your backend TTS server
+    async function generateTTS(text) {
+      const response = await fetch('http://127.0.0.1:5000/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text })
+      });
+
+      // Convert response into a blob (binary large object - audio file)
+      const blob = await response.blob();
+
+      // Create temporary URL for the blob
+      const url = URL.createObjectURL(blob);
+
+      // Play audio from blob
+      const audio = new Audio(url);
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
