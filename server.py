@@ -1,30 +1,39 @@
 # Import required libraries
-from flask import Flask, request, send_file
-from gtts import gTTS
-import io
+from flask import Flask, request, jsonify
+import pyttsx3
 import os
 
-# Initialize Flask app
 app = Flask(__name__)
 
-# Define TTS endpoint
+# Make sure audio directory exists
+if not os.path.exists('audio'):
+    os.makedirs('audio')
+
 @app.route('/tts', methods=['POST'])
 def tts():
-    data = request.get_json()  # Get JSON payload from frontend
-    text = data['text']        # Extract text field
+    data = request.get_json()
+    text = data['text']
 
-    # Use gTTS to generate speech directly into memory buffer
-    tts = gTTS(text)
-    mp3_fp = io.BytesIO()
-    tts.write_to_fp(mp3_fp)
-    mp3_fp.seek(0)
+    output_path = 'audio/output.mp3'
 
-    # Return audio file from memory directly to browser
-    return send_file(mp3_fp, mimetype='audio/mpeg')
+    # Generate speech using pyttsx3 and save to file
+    engine = pyttsx3.init()
+    engine.save_to_file(text, output_path)
+    engine.runAndWait()
+    engine.stop()
 
-# Run Flask app locally on port 5000
+    # Return just the file path as JSON
+    return jsonify({'file_url': f'/audio/output.mp3'})
+
+# Serve static files from /audio folder
+@app.route('/audio/<filename>')
+def serve_audio(filename):
+    return app.send_static_file(f'audio/{filename}')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
 
 
