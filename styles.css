@@ -1,62 +1,44 @@
 /* Base styles for entire page */
 body {
-  background-color: #111;  /* Dark background for space theme */
-  color: #fff;             /* White text for contrast */
-  font-family: Arial, sans-serif; /* Clean modern font */
+  background-color: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-
-/* Styles for header */
 header {
   text-align: center;
   padding: 30px 0;
   font-size: 40px;
   font-weight: bold;
 }
-
-/* Container grid for book cards */
 .book-grid {
-  display: flex;        /* Flexbox layout */
-  justify-content: center; /* Center horizontally */
-  flex-wrap: wrap;      /* Allow multiple rows */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
-  gap: 20px;            /* Spacing between cards */
+  gap: 20px;
 }
-
-/* Styles for each book card */
 .card {
-  background-color: #222;  /* Slightly lighter than body */
-  border-radius: 10px;     /* Rounded corners */
+  background-color: #222;
+  border-radius: 10px;
   padding: 20px;
   width: 300px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Soft shadow for depth */
-  transition: transform 0.25s; /* Optional hover effect */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
 }
-
-/* Hover effect to lift the card slightly */
 .card:hover {
   transform: translateY(-5px);
 }
-
-/* Image inside card */
-.card img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-/* Style for buttons */
 button {
-  background-color: #008CBA;
-  color: white;
-  border: none;
   padding: 10px 20px;
-  font-size: 16px;
+  margin-top: 15px;
+  font-weight: bold;
+  background-color: #00bcd4;
+  border: none;
   border-radius: 5px;
-  cursor: pointer;
+  color: white;
 }
-
 button:hover {
-  background-color: #005f73;
+  background-color: #008c9e;
 }

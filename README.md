@@ -1,32 +1,22 @@
-# Alien Archives: TTS Web Application
+# Alien Archives Web App
 
-## 📖 Project Overview
+## Project Description
 
-This is a complete web application simulating a science-fiction audiobook library called *Alien Archives*. It integrates:
+This is a full-stack web application that allows users to read and listen to fictional eBooks about aliens. The app integrates:
 
-- Frontend: HTML, CSS, and JavaScript
-- Backend: Flask (Python Web Framework)
-- Text-to-Speech: `pyttsx3` (offline TTS engine)
+- Flask (Python web framework)
+- pyttsx3 (Local Text-to-Speech engine)
+- HTML, CSS (Frontend web interface)
+- JSON REST API
 
-When a user clicks "READ & LISTEN" on a book, the text is sent to the backend server which generates audio and plays it directly in the browser.
+## Setup Instructions
 
----
-
-## 🚀 Features
-
-- Fully responsive design with CSS Flexbox.
-- 5 fictional books, each with full summaries.
-- Fully functional Text-to-Speech conversion.
-- Real-time TTS playback directly in the browser.
-- Flask API backend.
-- Offline TTS engine using `pyttsx3`.
-
----
-
-## 💻 How To Run Locally
-
-### 1️⃣ Clone or download this repo.
+1️⃣ Clone or download this repository.  
+2️⃣ Navigate to project directory.  
+3️⃣ Create Python virtual environment:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
+python3 -m venv my_venv
+source my_venv/bin/activate
+
 

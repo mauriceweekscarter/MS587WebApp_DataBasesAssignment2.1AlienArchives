@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alien Archives</title>
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Linking external stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
+  <!-- Website Header -->
   <header>
     <h1>ALIEN ARCHIVES</h1>
   </header>
 
+  <!-- Container for all book cards -->
   <div class="book-grid">
+
     <!-- Book 1 -->
     <div class="card">
-      <img src="arrival.png" alt="The Arrival: First Contact" />
+      <img src="arrival.png" alt="The Arrival: First Contact">
       <h3>The Arrival: First Contact</h3>
       <p><em>Dr. Orion Vose</em></p>
       <p>The skies above New Mexico glowed as an unidentified object pierced Earth’s atmosphere...</p>
-      <button onclick="onRead(`The skies above New Mexico glowed as an unidentified object pierced Earth’s atmosphere. Scientists and governments scrambled to make first contact with what appeared to be intelligent extraterrestrial life. The world would never be the same. Massive debates raged: were these visitors peaceful explorers or threats?`)">READ & LISTEN</button>
+      <button onclick="onRead('The skies above New Mexico glowed as an unidentified object pierced Earth’s atmosphere. Scientists and governments scrambled to make first contact with what appeared to be intelligent extraterrestrial life. The world would never be the same. In the days that followed, massive debates raged across the globe: were these visitors peaceful explorers or potential threats? As the first transmission was received from the alien craft, humanity held its breath, preparing for a new chapter in history.')">
+        READ & LISTEN
+      </button>
     </div>
 
     <!-- Book 2 -->
@@ -27,8 +34,10 @@
       <img src="infiltration.png" alt="Alien Infiltration: Among Us">
       <h3>Alien Infiltration: Among Us</h3>
       <p><em>Luna Arcturus</em></p>
-      <p>They came silently, blending into humanity...</p>
-      <button onclick="onRead(`They came silently, blending into humanity. Disguised as neighbors, coworkers, and leaders, their mission was simple: observe, manipulate, and prepare for full integration. The resistance struggled to expose the infiltration before humanity lost control.`)">READ & LISTEN</button>
+      <p>They came silently, blending into humanity. Disguised as neighbors, co-workers, and leaders...</p>
+      <button onclick="onRead('They came silently, blending into humanity. Disguised as neighbors, co-workers, and even world leaders, their mission was simple: observe, manipulate, and prepare for full integration. Over decades, their advanced technology allowed them to hide in plain sight, studying every aspect of human culture. The resistance knew the truth but struggled to expose the infiltration. As world governments unwittingly fell under their influence, a handful of scientists raced to develop detection methods before it was too late.')">
+        READ & LISTEN
+      </button>
     </div>
 
     <!-- Book 3 -->
@@ -37,7 +46,9 @@
       <h3>Galactic War: The Zorath Conflict</h3>
       <p><em>Captain Rylos Kane</em></p>
       <p>The Zorath Empire declared war on the Alliance after centuries of uneasy peace...</p>
-      <button onclick="onRead(`The Zorath Empire declared war after centuries of uneasy peace. Massive starships clashed across galaxies. Earth`)">READ & LISTEN</button>
+      <button onclick="onRead('The Zorath Empire declared war on the Alliance after centuries of uneasy peace. Massive starships clashed across galaxies, and Earth found itself forced into an interstellar battle it never expected to fight. The Zorath were ruthless conquerors, their plasma weapons devastating entire fleets. Earth’s young space fleet allied with alien species in hopes of survival. As commanders debated strategy, spies uncovered a secret weapon that could shift the war’s tide. But deploying it would risk annihilating entire star systems.')">
+        READ & LISTEN
+      </button>
     </div>
 
     <!-- Book 4 -->
@@ -46,20 +57,26 @@
       <h3>Abducted: The Human Experiment</h3>
       <p><em>Elara Moon</em></p>
       <p>When Sarah woke up on a cold metal table, she realized she wasn’t on Earth anymore...</p>
-      <button onclick="onRead(`Sarah woke up on a cold metal table, realizing she wasn’t on Earth. Part of a genetic experiment by beings more advanced than humans, she joined others plotting a daring escape, hoping to return to Earth and expose the truth.`)">READ & LISTEN</button>
+      <button onclick="onRead('When Sarah woke up on a cold metal table, she realized she wasn’t on Earth anymore. She was part of a genetic experiment conducted by beings far more advanced than humans could comprehend. The room was sterile, illuminated by soft blue lights, and filled with instruments she couldn’t recognize. Her abductors communicated telepathically, observing her biological reactions. But Sarah wasn’t alone. Dozens of other abductees shared her fate. Together, they plotted a daring escape, hoping to return to Earth and expose the truth.')">
+        READ & LISTEN
+      </button>
     </div>
 
-     <!-- Book 5 -->
+    <!-- Book 5 -->
     <div class="card">
       <img src="archives.png" alt="The Alien Archives: Hidden Truth">
       <h3>The Alien Archives: Hidden Truth</h3>
       <p><em>Professor Xeno Carter</em></p>
-      <p>Deep beneath Area 51 lies the Alien Archives...</p>
-      <button onclick="onRead(`Beneath Area 51 lies the Alien Archives—the classified records of every encounter, abduction, and secret deal made with extraterrestrials since 1947. Rogue insiders now threaten to leak the truth to the world.`)">READ & LISTEN</button>
+      <p>Deep beneath Area 51 lies the Alien Archives — secret records of every alien encounter since 1947...</p>
+      <button onclick="onRead('Deep beneath Area 51 lies the Alien Archives — the classified records of every encounter, every abduction, and every secret deal made with extraterrestrial civilizations since 1947. These files hold evidence of interstellar trade, secret alliances, and unexplainable technology reverse-engineered from crashed spacecraft. Buried deep within secured chambers, the Archives contain biological samples of multiple alien species. Only a few top-ranking officials have clearance. But now, a rogue insider threatens to leak the truth to the world.')">
+        READ & LISTEN
+      </button>
     </div>
+
   </div>
 
   <script>
+    // This function sends text to your backend TTS server
     async function generateTTS(text) {
       const response = await fetch('http://127.0.0.1:5000/tts', {
         method: 'POST',
@@ -67,16 +84,17 @@
         body: JSON.stringify({ text: text })
       });
 
-      const data = await response.json();
-      const audioUrl = data.file_url;
-
-      const audio = new Audio(audioUrl);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
       audio.play();
     }
 
+    // This function is called when the user clicks any "READ & LISTEN" button
     function onRead(text) {
       generateTTS(text);
     }
   </script>
+
 </body>
 </html>
