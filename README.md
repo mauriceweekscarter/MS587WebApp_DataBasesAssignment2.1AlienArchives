@@ -24,9 +24,20 @@
 
 ---
 
+### 📌 No Backend Server Required
+
+- Runs fully in browser.
+- No Flask, no Python.
+- 100% self-contained.
+
+---
+
 ### 📌 How to Run:
 
 1️⃣ Simply open `index.html` in any modern browser.  
 2️⃣ Click on any book.  
 3️⃣ Click "Read Aloud" to hear the eBook.
 
+---
+
+ 

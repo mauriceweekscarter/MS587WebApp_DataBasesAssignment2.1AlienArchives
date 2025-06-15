@@ -1,3 +1,4 @@
+/* Entire page style */
 body {
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -5,6 +6,8 @@ body {
     text-align: center;
     padding: 20px;
 }
+
+/* Book button style */
 button {
     padding: 10px 20px;
     font-size: 16px;
@@ -15,9 +18,11 @@ button {
     background-color: #00bcd4;
     color: white;
 }
+
 button:hover {
     background-color: #008c9e;
 }
+
 .hidden {
     display: none;
 }
