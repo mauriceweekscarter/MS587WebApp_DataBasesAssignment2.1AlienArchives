@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +6,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>📚 Alien Archives eBooks 📚</h1>
+    <h1>👽 Alien Archives</h1>
 
-    <div id="book-list"></div>
+    <div class="book-grid">
+        <!-- Book 1 -->
+        <div class="card">
+            <img src="arrival.png" alt="Arrival: First Contact">
+            <h2>The Arrival: First Contact</h2>
+            <p>Dr. Orion Vose</p>
+            <button onclick="readBook('arrival')">📖 Read & Listen</button>
+        </div>
 
-    <div id="reader-section" class="hidden">
-        <h2 id="book-title"></h2>
-        <p id="book-content"></p>
-        <button onclick="readAloud()">🔊 Read Aloud</button>
+        <!-- Book 2 -->
+        <div class="card">
+            <img src="infiltration.png" alt="Alien Infiltration: Among Us">
+            <h2>Alien Infiltration: Among Us</h2>
+            <p>Luna Arcturus</p>
+            <button onclick="readBook('infiltration')">📖 Read & Listen</button>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="card">
+            <img src="galacticwar.png" alt="Galactic War: The Zorath Conflict">
+            <h2>Galactic War: The Zorath Conflict</h2>
+            <p>Captain Rylos Kane</p>
+            <button onclick="readBook('galacticwar')">📖 Read & Listen</button>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="card">
+            <img src="abducted.png" alt="Abducted: The Human Experiment">
+            <h2>Abducted: The Human Experiment</h2>
+            <p>Elara Moon</p>
+            <button onclick="readBook('abducted')">📖 Read & Listen</button>
+        </div>
+
+        <!-- Book 5 -->
+        <div class="card">
+            <img src="archives.png" alt="The Alien Archives: Hidden Truth">
+            <h2>The Alien Archives: Hidden Truth</h2>
+            <p>Commander Zorath</p>
+            <button onclick="readBook('archives')">📖 Read & Listen</button>
+        </div>
     </div>
 
     <script src="ebooks.js"></script>
